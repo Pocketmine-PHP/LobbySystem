@@ -1,0 +1,14 @@
+---
+JoinBroadcast1: §7=======================
+LEER: " "
+JoinBroadcast2: ' §8» §6Willkommen auf unserem Server'
+JoinBroadcast3: ' §8» §fWEBSITE§7 × §5YOURWEBSITE.NET'
+JoinBroadcast4: ' §8» §fDISCORD§7 × §5YOURDISCORD'
+LEER2: " "
+JoinBroadcast5: §7=======================
+BlockBreakMessage: ' §cDu kannst hier nicht abbauen'
+Hub/Lobby: ' §c Willkommen in der Lobby'
+JoinTitle: ' §7[§a»§7] §aWllkommen'
+Prefix: §7[§6§lLOBBY§r§7]
+Chat: ' §7Du musst den Rang §6Premium§7 besitzen um schreiben zu koennen!'
+...
