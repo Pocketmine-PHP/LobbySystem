@@ -1,0 +1,16 @@
+name: LobbyCore
+version: 1.0.0
+main: zBearchenPlayz\Main
+api: [3.0.0-ALPHA12]
+author: zBearchenPlayz
+For Organization: Pocketmine-PHP
+permissions:
+  lobby.yt:
+    default: op
+commands:
+  hub:
+     description: hub
+     usage: /hub
+  lobby:
+     description: lobby
+     usage: /lobby
