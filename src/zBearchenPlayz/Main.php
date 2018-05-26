@@ -261,7 +261,7 @@ class Main extends PluginBase implements Listener
 
 		} elseif ($item->getCustomName() == "§4Silent Hub") {
 			if ($player->hasPermission("Lobby.silent") {
-				$event->getPlayer()->transfer("skyminepe.ga" , "25589"));
+				$event->getPlayer()->transfer("skyminepe.ga","25589");
 			}
               
                 } elseif ($item->getCustomName() == "§eLobby Switcher") {
