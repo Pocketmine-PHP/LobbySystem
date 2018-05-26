@@ -1,6 +1,6 @@
 <?php
 
-namespace SoartexHD;
+namespace zBearchenPlayz;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
