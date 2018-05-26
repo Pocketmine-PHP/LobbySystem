@@ -1,6 +1,6 @@
 <?php
 
-namespace zBearchenPlayz;
+namespace SoartexHD;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -38,7 +38,7 @@ class Main extends PluginBase implements Listener
 
 		$prefix = new Config($this->getDataFolder() . "prefix.yml" , Config::YAML);
 		if (empty($prefix->get("Prefix"))) {
-			$prefix->set("Prefix" , "§7[§6§lLobby§r§7]");
+			$prefix->set("Prefix" , "§7[§6§lSystem§r§7]");
 		}
 		$prefix->save();
 
@@ -53,22 +53,22 @@ class Main extends PluginBase implements Listener
 			$config->set("LEER" , "");
 			$config->set("JoinBroadcast2" , " §8» §6Willkommen auf unserem Netzwerk");
 			$config->set("JoinBroadcast3" , " §8» §fWebseite§7 × §4Coming Soon");
-			$config->set("JoinBroadcast4" , " §8» §fDiscord§7   × §5Unseren Discord: https://discord.gg/RvV4p9T");
+			$config->set("JoinBroadcast4" , " §8» §fDiscord§7 × §5Unseren Discord: https://discord.gg/N9JEsAE");
 			$config->set("LEER2" , "");
 			$config->set("JoinBroadcast5" , "§7=======================");
-			$config->set("BlockBreakMessage" , " §cDu kannst hier nicht abbauen!");
+			$config->set("BlockBreakMessage" , " §cDu darfst hier nicht abbauen!");
 			$config->set("Hub/Lobby" , " §c Willkommen in der Lobby");
 			$config->set("JoinTitle" , " §7[§a»§7] §aWillkommen");
-			$config->set("Prefix" , "§7[§6§lLobby§r§7]");
+			$config->set("Prefix" , "§7[§6§lSystem§r§7]");
 			$config->set("Chat" , " §7Du musst den Rang §6Premium§7 besitzen um schreiben zu können!");
 		}
 		$config->save();
 
 		$info = new Config($this->getDataFolder() . "info.yml" , Config::YAML);
 		if (empty($info->get("infoline1"))) {
-			$info->set("infoline1" , "§7===§7[§a§lSkyMinePE§r§7]===");
+			$info->set("infoline1" , "§7===§7[§a§lVaronPE§r§7]===");
 			$info->set("infoline2" , "§7» §1Bei Weiteren Fragen melde dich im Discord");
-			$info->set("infoline3" , "§7» §1https://discord.gg/RvV4p9T6");
+			$info->set("infoline3" , "§7» §1https://discord.gg/N9JEsAE");
 			$info->set("infoline4" , "§7» §1Dazu,wird dich dann ein Supporter oder Moderator dich moven und dir helfen.");
 			$info->set("infoline5" , "§7=================");
 			$info->set("Popup" , "» §6Vielen Dank");
@@ -77,7 +77,7 @@ class Main extends PluginBase implements Listener
 
 		$LobbyTitle = new Config($this->getDataFolder() . "Title.yml" , Config::YAML);
 		if (empty($LobbyTitle->get("LobbySendigBackTitle"))) {
-			$LobbyTitle->set("LobbySendigBackTitle" , "§7» §6Lobby");
+			$LobbyTitle->set("LobbySendigBackTitle" , "§7» §5§lLobby");
 		}
 		$LobbyTitle->save();
 
@@ -131,10 +131,10 @@ class Main extends PluginBase implements Listener
 		}
 
 		$player->getInventory()->setSize(9);
-		$player->getInventory()->setItem(4 , Item::get(339)->setCustomName("§aInfos"));
-		$player->getInventory()->setItem(0 , Item::get(345)->setCustomName("§4Teleporter"));
-		$player->getInventory()->setItem(5 , Item::get(46)->setCustomName("§4Silent Hub"));
-		$player->getInventory()->setItem(3 , Item::get(347)->setCustomName("§eLobby Switcher"));
+		$player->getInventory()->setItem(0 , Item::get(339)->setCustomName("§aInfos"));
+		$player->getInventory()->setItem(4 , Item::get(345)->setCustomName("§4Teleporter"));
+		$player->getInventory()->setItem(6 , Item::get(46)->setCustomName("§4Silent Hub"));
+		$player->getInventory()->setItem(2 , Item::get(347)->setCustomName("§eLobby Switcher"));
 		$player->getInventory()->setItem(8 , Item::get(54)->setCustomName("§9Gadgets"));
 		if ($player->hasPermission("lobby.yt")) {
 			$player->getInventory()->setItem(7 , Item::get(288)->setCustomName("§fFly"));
@@ -250,15 +250,17 @@ class Main extends PluginBase implements Listener
 			$player->getInventory()->clearAll();
 			$player->getInventory()->setSize(9);
 			$player->getInventory()->setItem(0 , Item::get(160)->setCustomName("§7-"));
-			$player->getInventory()->setItem(1 , Item::get(2)->setCustomName("§b§lSkyWars"));
+			$player->getInventory()->setItem(1 , Item::get(267)->setCustomName("§eMiniGames"));
 			$player->getInventory()->setItem(2 , Item::get(160)->setCustomName("§7-"));
-			$player->getInventory()->setItem(3 , Item::get(283)->setCustomName("§2§lCityBuild"));
+			$player->getInventory()->setItem(3 , Item::get(138)->setCustomName("§bCityBuild"));
 			$player->getInventory()->setItem(4 , Item::get(160)->setCustomName("§7-"));
 			$player->getInventory()->setItem(5 , Item::get(399)->setCustomName("§5§lLobby"));
+			$player->getInventory()->setItem(6 , Item::get(160)->setCustomName("§7-"));
+			$player->getInventory()->setItem(7 , Item::get(346)->setCustomName("§cFFA"));
 			$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
 
 		} elseif ($item->getCustomName() == "§4Silent Hub") {
-			if ($player->hasPermission("Lobby.silent")) {
+			if ($player->hasPermission("Lobby.silent") {
 				$event->getPlayer()->transfer("skyminepe.ga" , "25589");
 			}
               
@@ -268,7 +270,6 @@ class Main extends PluginBase implements Listener
             $player->getInventory()->setItem(2 , Item::get(42)->setCustomName("§bLobby 1"));
             $player->getInventory()->setItem(3 , Item::get(42)->setCustomName("§bLobby 2"));
             $player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§4Zurück"));
-           
                  
 		} elseif ($item->getCustomName() == "§9Gadgets") {
 
@@ -283,6 +284,7 @@ class Main extends PluginBase implements Listener
 				$player->getInventory()->setItem(1 , Item::get(287)->setCustomName("§aPartikel"));
 				$player->getInventory()->setItem(4 , Item::get(341)->setCustomName("§aJump Slime"));
 				$player->getInventory()->setItem(3 , Item::get(378)->setCustomName("§bKöpfe"));
+				$player->getInventory()->setItem(5 , Item::get(131)->setCustomName("§eGrößen"));
 			} else {
 				$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
 				$player->getInventory()->setItem(1 , Item::get(160)->setCustomName("§aPartikel §7[§6Premium§7]"));
@@ -290,6 +292,7 @@ class Main extends PluginBase implements Listener
 				$player->getInventory()->setItem(2 , Item::get(38)->setCustomName("§dBoots §7[§6Premium§7]"));
 				$player->getInventory()->setItem(4 , Item::get(341)->setCustomName("§aJump Slime §7[§6Premium§7]"));
 				$player->getInventory()->setItem(3 , Item::get(378)->setCustomName("§bKöpfe §7[§6Premium§7]"));
+				$player->getInventory()->setItem(5 , Item::get(131)->setCustomName("§eGrößen §7[§6Premium§7]"));
 			}
 
 		} elseif ($item->getCustomName() == "§6Effekte") {
@@ -298,9 +301,9 @@ class Main extends PluginBase implements Listener
 			$player->getInventory()->clearAll();
 			$player->getInventory()->setSize(9);
 			$player->getInventory()->setItem(0 , Item::get(265)->setCustomName("§8§l»§r §aJumpboost"));
-			$player->getInventory()->setItem(1 , Item::get(160)->setCustomName(""));
+			$player->getInventory()->setItem(1 , Item::get(388)->setCustomName("§8§l»§r §6Übelkeit"));
 			$player->getInventory()->setItem(2 , Item::get(266)->setCustomName("§8§l»§r §3Speedboost"));
-			$player->getInventory()->setItem(3 , Item::get(160)->setCustomName(""));
+			$player->getInventory()->setItem(3 , Item::get(331)->setCustomName("§8§l»§r §5Blindheit"));
 			$player->getInventory()->setItem(4 , Item::get(264)->setCustomName("§8§l»§r §fGhost"));
 			$player->getInventory()->setItem(6 , Item::get(32)->setCustomName("§8» §c§lausschalten"));
 			$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
@@ -317,12 +320,31 @@ class Main extends PluginBase implements Listener
 			$player->getInventory()->setItem(4 , Item::get(397 , 4)->setCustomName("§8»§r §cCreeper Kopf"));
 			$player->getInventory()->setItem(6 , Item::get(409)->setCustomName("§8» §c§lKöpfe Absetzen"));
 			$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
+			
+			} elseif ($item->getCustomName() == "§5Steve Kopf") {
 
-		} elseif ($item->getCustomName() == "§b§lSkyWars") {
+			$player->getInventory()->clearAll();
+			$player->getArmorInventory()->setHead(Item::get(397, 4 , 4));
+			$player->getInventory()->setSize(9);
+			$player->getInventory()->setItem(4 , Item::get(339)->setCustomName("§aInfos"));
+			$player->getInventory()->setItem(0 , Item::get(345)->setCustomName("§4Teleporter"));
+			$player->getInventory()->setItem(5 , Item::get(46)->setCustomName("§4Silent Hub"));
+			$player->getInventory()->setItem(3 , Item::get(347)->setCustomName("§eLobby Switcher"));
+			$player->getInventory()->setItem(8 , Item::get(54)->setCustomName("§9Gadgets"));
+			if ($player->hasPermission("lobby.yt")) {
+				$player->getInventory()->setItem(7 , Item::get(288)->setCustomName("§fFly"));
+			} else {
+				$player->getInventory()->setItem(7 , Item::get(152)->setCustomName("§fFly §7[§6Premium§7]"));
+			}
+			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
+			$player->sendMessage($this->prefix . " §7Du hast den §a§lSteve Kopf§r §7angezogen");
+
+
+		} elseif ($item->getCustomName() == "§eMiniGames") {
 
 			$player->sendMessage("");
-			$player->sendMessage($this->prefix . Color::RED . "Du wurdest zu §b§lSkyWars §cteleportiert");
-			$player->teleport(new Vector3(-61 , 25 , 0));
+			$player->sendMessage($this->prefix . Color::RED . " Du wurdest zu §eMiniGames §r§cteleportiert");
+			$player->teleport(new Vector3(60 , 26 , 99));
 			$player->getlevel()->addSound(new EndermanTeleportSound($player));
 			$player->getInventory()->clearAll();
 			$player->getInventory()->setSize(9);
@@ -338,11 +360,31 @@ class Main extends PluginBase implements Listener
 			}
 			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
 
-		} elseif ($item->getCustomName() == "§2§lCityBuild") {
+		} elseif ($item->getCustomName() == "§bCityBuild") {
 
 			$player->sendMessage("");
-			$player->sendMessage($this->prefix . Color::RED . "Du wurdest zu §2§lCityBuild §cteleportiert");
-			$player->teleport(new Vector3(0 , 28 , -62));
+			$player->sendMessage($this->prefix . Color::RED . " Du wurdest zu §bCityBuild §r§cteleportiert");
+			$player->teleport(new Vector3(-57 , 26 , 112));
+			$player->getlevel()->addSound(new EndermanTeleportSound($player));
+			$player->getInventory()->clearAll();
+			$player->getInventory()->setSize(9);
+			$player->getInventory()->setItem(4 , Item::get(339)->setCustomName("§aInfos"));
+			$player->getInventory()->setItem(0 , Item::get(345)->setCustomName("§4Teleporter"));
+			$player->getInventory()->setItem(5 , Item::get(46)->setCustomName("§4Silent Hub"));
+			$player->getInventory()->setItem(3 , Item::get(347)->setCustomName("§eLobby Switcher"));
+			$player->getInventory()->setItem(8 , Item::get(54)->setCustomName("§9Gadgets"));
+			if ($player->hasPermission("lobby.yt")) {
+				$player->getInventory()->setItem(7 , Item::get(288)->setCustomName("§fFly"));
+			} else {
+				$player->getInventory()->setItem(7 , Item::get(152)->setCustomName("§fFly §7[§6Premium§7]"));
+			}
+			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
+			
+			} elseif ($item->getCustomName() == "§cFFA") {
+
+			$player->sendMessage("");
+			$player->sendMessage($this->prefix . Color::RED . " Du wurdest zu §4FFA §r§cteleportiert");
+			$player->teleport(new Vector3(68 , 26 , 107));
 			$player->getlevel()->addSound(new EndermanTeleportSound($player));
 			$player->getInventory()->clearAll();
 			$player->getInventory()->setSize(9);
@@ -435,6 +477,48 @@ class Main extends PluginBase implements Listener
 				$player->getInventory()->setItem(7 , Item::get(152)->setCustomName("§fFly §7[§6Premium§7]"));
 			}
 			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
+			
+			} elseif ($item->getCustomName() == "§8§l»§r §6Übelkeit") {
+
+			$player->removeAllEffects();
+			$eff = new EffectInstance(Effect::getEffect(Effect::NAUSEA) , 500 * 20 , 5 , false);
+			$player->addEffect($eff);
+			$player->sendMessage($this->prefix . Color::WHITE . " §7Du hast den Effekt §a§lÜbelkeit§r §7ausgewählt");
+			$player->sendPopup("§8§l»§r §6Übelkeit§7: §cAktiviert");
+			$player->getInventory()->clearAll();
+			$player->getInventory()->setSize(9);
+			$player->getInventory()->setItem(4 , Item::get(339)->setCustomName("§aInfos"));
+			$player->getInventory()->setItem(0 , Item::get(345)->setCustomName("§4Teleporter"));
+			$player->getInventory()->setItem(5 , Item::get(46)->setCustomName("§4Silent Hub"));
+			$player->getInventory()->setItem(3 , Item::get(347)->setCustomName("§eLobby Switcher"));
+			$player->getInventory()->setItem(8 , Item::get(54)->setCustomName("§9Gadgets"));
+			if ($player->hasPermission("lobby.yt")) {
+				$player->getInventory()->setItem(7 , Item::get(288)->setCustomName("§fFly"));
+			} else {
+				$player->getInventory()->setItem(7 , Item::get(152)->setCustomName("§fFly §7[§6Premium§7]"));
+			}
+			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
+			
+			} elseif ($item->getCustomName() == "§8§l»§r §5Blindheit") {
+
+			$player->removeAllEffects();
+			$eff = new EffectInstance(Effect::getEffect(Effect::BLINDNESS) , 500 * 20 , 5 , false);
+			$player->addEffect($eff);
+			$player->sendMessage($this->prefix . Color::WHITE . " §7Du hast den Effekt §5§lBlindheit§r §7ausgewählt");
+			$player->sendPopup("§8§l»§r §5Blindheit§7: §cAktiviert");
+			$player->getInventory()->clearAll();
+			$player->getInventory()->setSize(9);
+			$player->getInventory()->setItem(4 , Item::get(339)->setCustomName("§aInfos"));
+			$player->getInventory()->setItem(0 , Item::get(345)->setCustomName("§4Teleporter"));
+			$player->getInventory()->setItem(5 , Item::get(46)->setCustomName("§4Silent Hub"));
+			$player->getInventory()->setItem(3 , Item::get(347)->setCustomName("§eLobby Switcher"));
+			$player->getInventory()->setItem(8 , Item::get(54)->setCustomName("§9Gadgets"));
+			if ($player->hasPermission("lobby.yt")) {
+				$player->getInventory()->setItem(7 , Item::get(288)->setCustomName("§fFly"));
+			} else {
+				$player->getInventory()->setItem(7 , Item::get(152)->setCustomName("§fFly §7[§6Premium§7]"));
+			}
+			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
 
 		} elseif ($item->getCustomName() == "§fFly") {
 
@@ -463,7 +547,7 @@ class Main extends PluginBase implements Listener
 
 			$player->getInventory()->setItem(1 , Item::get(280)->setCustomName("§eSpieler verstecken §8[§cUnsichtbar§8]"));
 			$this->hideall[] = $player;
-			$player->sendMessage($this->prefix . "§7Die Spieler sind jetzt §8[§c§lUnsichtbar§r§8]");
+			$player->sendMessage($this->prefix . "§7 Die Spieler sind jetzt §8[§c§lUnsichtbar§r§8]");
 
 		} elseif ($item->getCustomName() == "§eSpieler verstecken §8[§cUnsichtbar§8]") {
 
@@ -472,7 +556,7 @@ class Main extends PluginBase implements Listener
 				$player->showPlayer($p);
 			}
 			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
-			$player->sendMessage($this->prefix . "§7Die Spieler sind jetzt §8[§a§lSichtbar§r§8]");
+			$player->sendMessage($this->prefix . "§7 Die Spieler sind jetzt §8[§a§lSichtbar§r§8]");
 
 		} elseif ($item->getCustomName() == "§dBoots") {
 
@@ -481,7 +565,9 @@ class Main extends PluginBase implements Listener
 			$player->getInventory()->setItem(0 , Item::get(309)->setCustomName("§7§lEISENSCHUHE"));
 			$player->getInventory()->setItem(1 , Item::get(313)->setCustomName("§1§lDIAMANTSCHUHE"));
 			$player->getInventory()->setItem(2 , Item::get(317)->setCustomname("§e§lGOLDENESCHUHE"));
-			$player->getInventory()->setItem(3,  Item::get(301)->setCustomName("§c§lLEDERSCHUHE"));
+			$player->getInventory()->setItem(3 , Item::get(301)->setCustomName("§c§lLEDERSCHUHE"));
+			$player->getInventory()->setItem(4 , Item::get(305)->setCustomName("§9§lKETTENSCHUHE"));
+			$player->getInventory()->setItem(7 , Item::get(339)->setCustomName("§cSeite 2"));
 			$player->getInventory()->setItem(6 , Item::get(32)->setCustomName("§8» §4§lausschalten"));
 			$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
 
@@ -587,6 +673,25 @@ class Main extends PluginBase implements Listener
 			}
 			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
 			$player->sendMessage($this->prefix . " §7Du hast die §a§lLederSchuhe§r §7angezogen");
+			
+			
+           } elseif ($item->getCustomName() == "§9§lKETTENSCHUHE") {
+
+			$player->getInventory()->clearAll();
+			$player->getArmorInventory()->setBoots(Item::get(305 , 0 , 1));
+			$player->getInventory()->setSize(9);
+			$player->getInventory()->setItem(4 , Item::get(339)->setCustomName("§aInfos"));
+			$player->getInventory()->setItem(0 , Item::get(345)->setCustomName("§4Teleporter"));
+			$player->getInventory()->setItem(5 , Item::get(46)->setCustomName("§4Silent Hub"));
+			$player->getInventory()->setItem(3 , Item::get(347)->setCustomName("§eLobby Switcher"));
+			$player->getInventory()->setItem(8 , Item::get(54)->setCustomName("§9Gadgets"));
+			if ($player->hasPermission("lobby.yt")) {
+				$player->getInventory()->setItem(7 , Item::get(288)->setCustomName("§fFly"));
+			} else {
+				$player->getInventory()->setItem(7 , Item::get(152)->setCustomName("§fFly §7[§6Premium§7]"));
+			}
+			$player->getInventory()->setItem(1 , Item::get(369)->setCustomName("§eSpieler verstecken §8[§aSichtbar§8]"));
+			$player->sendMessage($this->prefix . " §7Du hast die §a§lKettenSchuhe§r §7angezogen");
 
 
 
@@ -604,7 +709,8 @@ class Main extends PluginBase implements Listener
 			$player->getInventory()->setItem(0 , Item::get(309)->setCustomName("§7§lEISENSCHUHE"));
 			$player->getInventory()->setItem(1 , Item::get(313)->setCustomName("§1§lDIAMANTSCHUHE"));
 			$player->getInventory()->setItem(2 , Item::get(317)->setCustomName("§e§lGOLDENESCHUHE"));
-			$player->getInventory()->setItem(3, Item::get(301)->setCustomName("§c§lLEDERSCHUHE"));
+			$player->getInventory()->setItem(3 , Item::get(301)->setCustomName("§c§lLEDERSCHUHE"));
+			$player->getInventory()->setItem(4 , Item::get(305)->setCustomName("§9§lKETTENSCHUHE"));
 			$player->getInventory()->setItem(6 , Item::get(32)->setCustomName("§8» §4§lausschalten"));
 			$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
 
@@ -618,12 +724,14 @@ class Main extends PluginBase implements Listener
 				$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
 				$player->getInventory()->setItem(4 , Item::get(341)->setCustomName("§aJump Slime"));
 				$player->getInventory()->setItem(1 , Item::get(160)->setCustomName("§7-"));
+				$player->getInventory()->setItem(3 , Item::get(378)->setCustomName("§bKöpfe"));
 			} else {
 				$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
 				$player->getInventory()->setItem(1 , Item::get(160)->setCustomName("§7-"));
 				$player->getInventory()->setItem(4 , Item::get(341)->setCustomName("§aJump Slime §7[§6Premium§7]"));
 				$player->getInventory()->setItem(0 , Item::get(377)->setCustomName("§6Effekte §7[§6Premium§7]"));
 				$player->getInventory()->setItem(2 , Item::get(38)->setCustomName("§dBoots §7[§6Premium§7]"));
+				$player->getInventory()->setitem(3 , Item::get(378)->setCustomName("§bKöpfe §7[§6Premium§7]"));
 			}
 
 		}
