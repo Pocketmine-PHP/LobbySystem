@@ -260,7 +260,7 @@ class Main extends PluginBase implements Listener
 			$player->getInventory()->setItem(8 , Item::get(351 , 1)->setCustomName("§cZurück"));
 
 		} elseif ($item->getCustomName() == "§4Silent Hub") {
-			if ($player->hasPermission("Lobby.silent") {
+			if ($player->hasPermission("Lobby.silent")){
 				$event->getPlayer()->transfer("skyminepe.ga","25589");
 			}
               
